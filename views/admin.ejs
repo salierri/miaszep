@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Válaszok</title>
+	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+	<div id="container">
+	<table class="table table-bordered table-hover table-stripped">
+		<thead>
+			<th>Küldő azonosító</th>
+			<th>Csoport</th>
+			<th>Kezdő időpont</th>
+			<th>Vége időpont</th>
+			<th>Válaszok</th>
+		</thead>
+<% for(var sender in allAnswers) { %>
+		<tr>
+			<td><%= sender %></td>
+			<td><%= allAnswers[sender][0] ? allAnswers[sender][0].group : "" %></td>
+			<td><%= allAnswers[sender][0] && allAnswers[sender][0].timestamp ? 
+				allAnswers[sender][0].timestamp.toLocaleString() : "" %></td>
+			<td><%= allAnswers[sender][kuestionCount - 1] && allAnswers[sender][kuestionCount - 1].timestamp ? 
+				allAnswers[sender][kuestionCount - 1].timestamp.toLocaleString() : "" %></td>
+<% for(var answer in allAnswers[sender]) { %>
+			<td><%= allAnswers[sender][answer].answer %></td>
+<% } %>
+		</tr>
+<% } %>
+	</table>
+	</div>
+</body>
+</html>

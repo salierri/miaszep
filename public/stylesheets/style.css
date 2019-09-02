@@ -1,0 +1,54 @@
+body {
+  padding: 50px;
+  font: 14px "Times New Roman", Helvetica, Arial, sans-serif;
+  font-family: "Times New Roman" !important;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.smallimage {
+  width: 150px;
+}
+
+.hidden {
+  display: none;
+}
+
+.bordered-button {
+  border: 1px solid black !important;
+  border-radius: 0px !important;
+}
+
+.fullscreen-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.fullcenter {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.vertcenter {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.inlinedisplay {
+  display: inline;
+}
+
+#imagecontainer {
+ overflow: hidden;
+  white-space: nowrap;
+}

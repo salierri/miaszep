@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <title>Mi a szép?</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=700, initial-scale=1">
+</head>
+
+<body>
+  <div id="welcome">
+    <h2>Szia! Anonim lesz a cucc. Mehet?</h2>
+    <button id="letsgobutton" class="btn bordered-button fullcenter">Mehet!</button>
+  </div>
+  <div id="nicejob" class="hidden">
+    <h2>Ügyesen kitöltötted, szép munka!</h2>
+  </div>
+  <div class="hidden fullscreen-container" id="images" style="display: none;">
+    <h2 class="text-center">Szerinted melyik a szebb?</h2>
+    <div class="fullcenter" id="imagecontainer">
+      <p class="inlinedisplay"><a href="#">
+        <img class="rounded smallimage" id="kep0" src="">
+      </a></p>
+      <p class="inlinedisplay"><a href="#">
+        <img class="rounded smallimage" id="kep1" src="">
+      </a></p>
+     <p class="inlinedisplay"><a href="#">
+        <img class="rounded smallimage" id="kep2" src="">
+      </a></p>
+      <p class="inlinedisplay"><a href="#">
+        <img class="rounded smallimage" id="kep3" src="">
+      </a></p>
+    </div>
+  </div>
+  <div id="textkuestion" class="hidden">
+    <h2 id="textkuestiontext"></h2>
+    <form id="textform" onsubmit="submitTextForm">
+      <input id="textAnswer" type="text" class="form-control" name="textAnswer" placeholder="Válasz">
+      <button id="letsgobutton" class="btn bordered-button" type="submit">Mehet!</button>
+    </form>
+  </div>
+  <div id="multichoice" class="hidden">
+    <h2 id="multichoicetext"></h2>
+    <button id="choice1" class="btn bordered-button" onclick="postChoice(1)">Mehet!</button>
+    <button id="choice2" class="btn bordered-button" onclick="postChoice(2)">Mehet!</button>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="/javascripts/main.js"></script>
+</body>
+
+</html>

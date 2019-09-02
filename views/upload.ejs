@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Feltöltés</title>
+	  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+		<% kuestions.forEach(function (kuestion) { %>
+	<form class="form form-inline" action="/upload/update">
+		<input class="form-control" type="text" name="_id" value="<%= kuestion._id %>" readonly>
+		<input class="form-control" type="text" name="id" value="<%= kuestion.id %>">
+		<select class="form-control" name="type">
+			<% types.forEach(function (type) { %>
+				<option <%= kuestion.type == type ? "selected" : "" %> value="<%= type %>"><%= type %></option>
+			<% }) %>
+		</select>
+		<% if(kuestion.type == "text" || kuestion.type == "choice") { %>
+			<input class="form-control" type="text" name="text" value="<%= kuestion.text %>">
+		<% } %>
+		<% if(kuestion.type == "choice") { %>
+			<input class="form-control" type="text" name="choice1" value="<%= kuestion.choice1 %>">
+		<% } %>
+		<% if(kuestion.type == "choice") { %>
+			<input class="form-control" type="text" name="choice2" value="<%= kuestion.choice2 %>">
+		<% } %>
+		<% if(kuestion.type == "image") { %>
+			<input class="form-control" type="text" name="images" value="<%= kuestion.images[0] %>">
+			<input class="form-control" type="text" name="images" value="<%= kuestion.images[1] %>">
+			<input class="form-control" type="text" name="images" value="<%= kuestion.images[2] %>">
+			<input class="form-control" type="text" name="images" value="<%= kuestion.images[3] %>">
+		<% } %>
+		<button class="btn btn-primary" type="submit">Mentés</button>
+		<a href="/upload/delete/<%= kuestion._id %>" class="btn btn-danger">Törlés</a>
+	</form>
+		<% }) %>
+	<a href="/upload/new" class="btn btn-success">Új kérdés</a>
+	<h1>File feltöltés:</h1>
+	<form action="/upload/upload" method="post" enctype="multipart/form-data">
+		 <input class="form-control" type="file" name="photo">
+		 <button type="submit" class="btn btn-primary">Feltöltés</button>
+	</form>
+</body>
+</html>
