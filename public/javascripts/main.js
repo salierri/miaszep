@@ -16,6 +16,7 @@ function getKuestion() {
     console.log(response);
     currentKverstion += 1;
     if(response.ended) {
+      window.location.replace(response.url);
       doFading("nicejob");
     }
     if(response.type == "image") {

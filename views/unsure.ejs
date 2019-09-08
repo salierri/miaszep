@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <title>Mi a szép?</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=700, initial-scale=1">
+</head>
+
+<body>
+  <form class="" method="post">
+    <div class="" id="images">
+      <input type="text" hidden="true" name="id" id="hiddenid">
+      <h2 class="text-center">Már csak egy gyors kérdésem van:</h2>
+      <h2 class="text-center">Melyik kérdésekben voltál igazán bizonytalan?</h2>
+      <% allKuestions.forEach(function(kuestion) { %>
+        <div class="margined">
+          <p class="inlinedisplay"><a href="#">
+            <img class="rounded smallimage" id="kep0" src="/images/<%= kuestion.images[0] %>">
+          </a></p>
+          <p class="inlinedisplay"><a href="#">
+            <img class="rounded smallimage" id="kep1" src="/images/<%= kuestion.images[1] %>">
+          </a></p>
+          <% if(kuestion.images[2]) { %>
+         <p class="inlinedisplay"><a href="#">
+            <img class="rounded smallimage" id="kep2" src="/images/<%= kuestion.images[2] %>">
+          </a></p>
+          <% } %>
+          <% if(kuestion.images[3]) { %>
+          <p class="inlinedisplay"><a href="#">
+            <img class="rounded smallimage" id="kep3" src="/images/<%= kuestion.images[3] %>">
+          </a></p>
+          <% } %>
+          <input class="" type="checkbox" name="<%= kuestion.id %>">
+        </div>
+      <% }) %>
+    </div>
+    <div style="float: left !important; display: inline-block !important;">
+      <button id="letsgobutton" class="btn bordered-button" type="submit">Mehet!</button>
+    </div>
+  </form>
+</body>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">$('#hiddenid').val(localStorage.id)</script>
+</html>

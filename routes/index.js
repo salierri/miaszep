@@ -25,7 +25,7 @@ router.post("/kuestion", function(req, res, next) {
   console.log(req.body.lastKvestion);
   Kuestion.findOne({id: +req.body.lastKvestion + 1}, function(err, doc) {
     if(doc == null) {
-      res.json({ended: true});
+      res.json({ended: true, url: req.url.replace('kuestion', 'unsure')});
     } else {
       res.json(doc);
     }
@@ -46,4 +46,31 @@ router.get("/admin", function(req, res, next) {
    })
   });
 });
+
+router.get('/admin/unsure', function(req, res, next) {
+  Unsure.find(function(err, doc) {
+    res.render('unsureadmin', { unsures: doc });
+  });
+});
+
+router.get("/unsure", function(req, res, next) {
+  Kuestion.find({type: 'image'}, function(err, doc) {
+    res.render('unsure', { allKuestions: doc });
+  });
+});
+
+router.post('/unsure', async function(req, res, next) {
+  kuestionCount = await Kuestion.count({});
+  let unsureArray = [];
+  for (var i = 0; i < kuestionCount; i++) {
+    unsureArray.push(req.body[i] == "on");
+  }
+  await (new Unsure({id: req.body.id, unsures: unsureArray})).save();
+  res.redirect('/thanks');
+});
+
+router.get('/thanks', function(req, res, next) {
+  res.render('welldone');
+})
+
 module.exports = router;

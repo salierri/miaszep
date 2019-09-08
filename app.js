@@ -31,6 +31,13 @@ var kuestionSchema = new mongoose.Schema({
 });
 Kuestion = mongoose.model('Kuestion', kuestionSchema);
 
+var unsureSchema = new mongoose.Schema({
+  _id: { type: mongoose.Schema.ObjectId, auto: true },
+  id: Number,
+  unsures: [Boolean],
+});
+Unsure = mongoose.model('Unsure', unsureSchema);
+
 var app = express();
 
 app.use(logger('dev'));
