@@ -43,7 +43,7 @@ router.get("/admin", function(req, res, next) {
       allAnswers[element.sender][element.kuestion] = element;
     });
     res.render("admin", { allAnswers: allAnswers, kuestionCount: kuestionCount });
-   })
+   }).sort('timestamp');
   });
 });
 
@@ -56,7 +56,7 @@ router.get('/admin/unsure', function(req, res, next) {
 router.get("/unsure", function(req, res, next) {
   Kuestion.find({type: 'image'}, function(err, doc) {
     res.render('unsure', { allKuestions: doc });
-  });
+  }).sort('id');
 });
 
 router.post('/unsure', async function(req, res, next) {

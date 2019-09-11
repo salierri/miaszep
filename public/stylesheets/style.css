@@ -6,6 +6,7 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none !important;
 }
 
 .smallimage {
@@ -66,4 +67,8 @@ input[type=checkbox]
   -o-transform: scale(2);
   padding: 10px;
   margin: 15px;
+}
+
+button {
+  outline: 0 !important;
 }

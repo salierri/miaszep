@@ -12,8 +12,7 @@
   <form class="" method="post">
     <div class="" id="images">
       <input type="text" hidden="true" name="id" id="hiddenid">
-      <h2 class="text-center">Már csak egy gyors kérdésem van:</h2>
-      <h2 class="text-center">Melyik kérdésekben voltál igazán bizonytalan?</h2>
+      <h2 class="text-center">Kérlek jelöld be, ha volt olyan, amelyikben nagyon nem voltál biztos! Többet is megjelölhetsz. (görgess le)</h2>
       <% allKuestions.forEach(function(kuestion) { %>
         <div class="margined">
           <p class="inlinedisplay"><a href="#">
@@ -37,7 +36,7 @@
       <% }) %>
     </div>
     <div style="float: left !important; display: inline-block !important;">
-      <button id="letsgobutton" class="btn bordered-button" type="submit">Mehet!</button>
+      <button id="letsgobutton" class="btn bordered-button" type="submit">ENNYI</button>
     </div>
   </form>
 </body>
