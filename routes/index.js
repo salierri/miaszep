@@ -35,14 +35,21 @@ router.post("/kuestion", function(req, res, next) {
 router.get("/admin", function(req, res, next) {
   Kuestion.count(function(err, kuestionCount) {
    Answer.find({}, function (err, doc) {
-    allAnswers = {};
+    let allAnswers = {};
     doc.forEach(function (element) {
       if(!allAnswers[element.sender]) {
         allAnswers[element.sender] = {};
       }
       allAnswers[element.sender][element.kuestion] = element;
     });
-    res.render("admin", { allAnswers: allAnswers, kuestionCount: kuestionCount });
+    let answerArray = [];
+    for(var answer in allAnswers) {
+      answerArray.push([answer, allAnswers[answer]]);
+    }
+    answerArray.sort(function(a, b) {
+      return a[1][0].timestamp - b[1][0].timestamp;
+    })
+    res.render("admin", { allAnswers: answerArray, kuestionCount: kuestionCount });
    }).sort('timestamp');
   });
 });

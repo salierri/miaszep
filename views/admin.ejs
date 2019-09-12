@@ -15,19 +15,19 @@
 			<th>Vége időpont</th>
 			<th>Válaszok</th>
 		</thead>
-<% for(var sender in allAnswers) { %>
+<% allAnswers.forEach(function(recipient) { %>
 		<tr>
-			<td><%= sender %></td>
-			<td><%= allAnswers[sender][0] ? allAnswers[sender][0].group : "" %></td>
-			<td><%= allAnswers[sender][0] && allAnswers[sender][0].timestamp ? 
-				allAnswers[sender][0].timestamp.toLocaleString() : "" %></td>
-			<td><%= allAnswers[sender][kuestionCount - 1] && allAnswers[sender][kuestionCount - 1].timestamp ? 
-				allAnswers[sender][kuestionCount - 1].timestamp.toLocaleString() : "" %></td>
-<% for(var answer in allAnswers[sender]) { %>
-			<td><%= allAnswers[sender][answer].answer %></td>
+			<td><%= recipient[0] %></td>
+			<td><%= recipient[1][0] ? recipient[1][0].group : "" %></td>
+			<td><%= recipient[1][0] && recipient[1][0].timestamp ? 
+				recipient[1][0].timestamp.toLocaleString() : "" %></td>
+			<td><%= recipient[1][kuestionCount - 1] && recipient[1][kuestionCount - 1].timestamp ? 
+				recipient[1][kuestionCount - 1].timestamp.toLocaleString() : "" %></td>
+<% for(var answer in recipient[1]) { %>
+			<td><%= recipient[1][answer].answer %></td>
 <% } %>
 		</tr>
-<% } %>
+<% }) %>
 	</table>
 	</div>
 </body>

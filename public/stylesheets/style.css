@@ -20,6 +20,8 @@ a {
 .bordered-button {
   border: 1px solid black !important;
   border-radius: 0px !important;
+  background-color: transparent;
+  padding: .375rem .75rem;
 }
 
 .fullscreen-container {
@@ -43,6 +45,14 @@ a {
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.horicenter {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .margined {
