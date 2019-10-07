@@ -16,7 +16,7 @@
 				<option <%= kuestion.type == type ? "selected" : "" %> value="<%= type %>"><%= type %></option>
 			<% }) %>
 		</select>
-		<% if(kuestion.type == "text" || kuestion.type == "choice") { %>
+		<% if(kuestion.type == "text" || kuestion.type == "choice" || kuestion.type == "6choice") { %>
 			<input class="form-control" type="text" name="text" value="<%= kuestion.text %>">
 		<% } %>
 		<% if(kuestion.type == "choice") { %>
@@ -24,6 +24,11 @@
 		<% } %>
 		<% if(kuestion.type == "choice") { %>
 			<input class="form-control" type="text" name="choice2" value="<%= kuestion.choice2 %>">
+		<% } %>
+		<% if(kuestion.type == "6choice") { %>
+			<% for(var i = 1; i < 7; i++) { %>
+				<input class="form-control" type="text" name="choice<%= i %>" value="<%= kuestion.choices[i - 1] %>">
+			<% } %>
 		<% } %>
 		<% if(kuestion.type == "image") { %>
 			<input class="form-control" type="text" name="images" value="<%= kuestion.images[0] %>">

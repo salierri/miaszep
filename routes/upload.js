@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var types = ["image", "choice", "text"];
+var types = ["image", "choice", "text", "6choice"];
 
 router.get("/", function(req, res, next) {
   Kuestion.find({}).sort("id").exec(function(err, doc) {
@@ -17,6 +17,14 @@ router.get("/delete/:_id", function(req, res, next) {
 
 router.get("/update", function(req, res, next) {
   console.log(req.query);
+  if(req.query.type == "6choice") {
+    req.query.choices = [req.query.choice1,
+                         req.query.choice2,
+                         req.query.choice3,
+                         req.query.choice4,
+                         req.query.choice5,
+                         req.query.choice6];
+  }
   Kuestion.updateOne({_id: req.query._id}, req.query, function(err, doc) {
     res.redirect("/upload");
   });

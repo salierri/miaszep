@@ -40,6 +40,12 @@ function getKuestion() {
       $("#choice1").text(response.choice1);
       $("#choice2").text(response.choice2);
       doFading("multichoice");
+    } else if(response.type == "6choice") {
+      $("#6choicetext").text(response.text);
+      for(var i = 0; i < 6; i++) {
+        $("#6choice" + (i + 1)).text(response.choices[i]);
+      }
+      doFading("6choice");
     }
   });
 }
@@ -66,6 +72,10 @@ function doFading(newType) {
 
 function postChoice(choice) {
   postAnswer($("#choice" + choice).text());
+}
+
+function post6Choice(choice) {
+  postAnswer($("#6choice" + choice).text());
 }
 
 $("#kep0").click(function() {

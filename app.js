@@ -27,6 +27,7 @@ var kuestionSchema = new mongoose.Schema({
   text: String,
   choice1: String,
   choice2: String,
+  choices: [String],
   images: [String],
 });
 Kuestion = mongoose.model('Kuestion', kuestionSchema);
