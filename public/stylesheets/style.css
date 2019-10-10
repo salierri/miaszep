@@ -22,6 +22,7 @@ a {
   border-radius: 0px !important;
   background-color: transparent;
   padding: .375rem .75rem;
+  margin-right: 5px;
 }
 
 .fullscreen-container {

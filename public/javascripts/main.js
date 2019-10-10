@@ -42,8 +42,17 @@ function getKuestion() {
       doFading("multichoice");
     } else if(response.type == "6choice") {
       $("#6choicetext").text(response.text);
-      for(var i = 0; i < 6; i++) {
-        $("#6choice" + (i + 1)).text(response.choices[i]);
+      $("#6choicebuttoncontainer").html('');
+      let template = $("#6choicetemplate");
+      for(var i = 0; i < response.choices.length; i++) {
+        var clone = template.clone();
+        clone.text(response.choices[i]);
+        clone.removeClass('hidden');
+        clone.attr('id', '6choice' + i);
+        var newI = i;
+        clone.click(() => post6Choice(newI));
+        clone.appendTo($('#6choicebuttoncontainer'));
+        console.log(clone);
       }
       doFading("6choice");
     }

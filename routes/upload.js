@@ -18,13 +18,12 @@ router.get("/delete/:_id", function(req, res, next) {
 router.get("/update", function(req, res, next) {
   console.log(req.query);
   if(req.query.type == "6choice") {
-    req.query.choices = [req.query.choice1,
-                         req.query.choice2,
-                         req.query.choice3,
-                         req.query.choice4,
-                         req.query.choice5,
-                         req.query.choice6];
+    req.query.choices = [];
+    for(var i = 0; i < +req.query.choiceCount; i++) {
+      req.query.choices.push(req.query['choice' + i] || '');
+    }
   }
+  console.log(req.query.choices);
   Kuestion.updateOne({_id: req.query._id}, req.query, function(err, doc) {
     res.redirect("/upload");
   });
