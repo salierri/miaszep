@@ -49,10 +49,9 @@ function getKuestion() {
         clone.text(response.choices[i]);
         clone.removeClass('hidden');
         clone.attr('id', '6choice' + i);
-        var newI = i;
+        let newI = i;
         clone.click(() => post6Choice(newI));
         clone.appendTo($('#6choicebuttoncontainer'));
-        console.log(clone);
       }
       doFading("6choice");
     }
