@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <title>Mi a szép?</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=700, initial-scale=1">
+</head>
+
+<body>
+  <div id="welcome">
+    <h3>Sajnos az egyik kérdésre hiányosan érkeztek be az adatok, így ahhoz, hogy az eredmények ne torzuljanak, néhány ember esetében szükségem lenne az évfolyam pontosítására. (Ha azóta nem nyitottátok meg a kérdőívet, akkor a rendszer annak a folytatásaként fogja érzékelni, így össze tudom kapcsolni a többi válaszotokkal.)<br/><br/></h3>
+  </div>
+  <div id="multichoice">
+    <h2 id="multichoicetext">Évfolyamom:</h2>
+    <form method="post" action="/evfolyam">
+      <input type="text" hidden="true" name="id" id="hiddenid">
+      <input class="bordered-button" type="submit" name="choice" value="1.">
+      <input class="bordered-button" type="submit" name="choice" value="2.">
+      <input class="bordered-button" type="submit" name="choice" value="3.">
+      <input class="bordered-button" type="submit" name="choice" value="4. /MSc 1.">
+      <input class="bordered-button" type="submit" name="choice" value="5. vagy 5+ /MSc 2. vagy 2+">
+      <input class="bordered-button" type="submit" name="choice" value="már lediplomáztam (MSc vagy osztatlan)">
+    </form>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script type="text/javascript">$('#hiddenid').val(localStorage.id)</script>
+</body>
+
+</html>

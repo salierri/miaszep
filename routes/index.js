@@ -67,7 +67,7 @@ router.get("/unsure", function(req, res, next) {
 });
 
 router.post('/unsure', async function(req, res, next) {
-  kuestionCount = await Kuestion.count({});
+  let kuestionCount = await Kuestion.count({});
   let unsureArray = [];
   for (var i = 0; i < kuestionCount; i++) {
     unsureArray.push(req.body[i] == "on");
@@ -78,6 +78,21 @@ router.post('/unsure', async function(req, res, next) {
 
 router.get('/thanks', function(req, res, next) {
   res.render('welldone');
-})
+});
+
+router.get('/evfolyam', function(req, res, next) {
+  res.render('evfolyam');
+});
+
+router.post('/evfolyam', async function(req, res, next) {
+  console.log('ujlink');
+  console.log(req.body);
+  let oldAnswer = await Answer.findOne({sender: +req.body.id, kuestion: 55});
+  if(oldAnswer) {
+    oldAnswer.answer = req.body.choice;
+    oldAnswer.save();
+  }
+  res.render('singlewelldone');
+});
 
 module.exports = router;
