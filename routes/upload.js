@@ -4,6 +4,9 @@ var router = express.Router();
 var types = ["image", "choice", "text", "6choice"];
 
 router.get("/", function(req, res, next) {
+  if(req.query.jelszo != 'bumburnyak') {
+    return res.sendStatus(403);
+  };
   Kuestion.find({}).sort("id").exec(function(err, doc) {
     res.render("upload", { kuestions: doc, types: types });
   });

@@ -33,6 +33,9 @@ router.post("/kuestion", function(req, res, next) {
 });
 
 router.get("/admin", function(req, res, next) {
+  if(req.query.jelszo != 'bumburnyak') {
+    return res.sendStatus(403);
+  };
   Kuestion.count(function(err, kuestionCount) {
    Answer.find({}, function (err, doc) {
     let allAnswers = {};
@@ -55,6 +58,9 @@ router.get("/admin", function(req, res, next) {
 });
 
 router.get('/admin/unsure', function(req, res, next) {
+  if(req.query.jelszo != 'bumburnyak') {
+    return res.sendStatus(403);
+  };
   Unsure.find(function(err, doc) {
     res.render('unsureadmin', { unsures: doc });
   });
