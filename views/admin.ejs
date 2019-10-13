@@ -23,8 +23,8 @@
 				recipient[1][0].timestamp.toLocaleString() : "" %></td>
 			<td><%= recipient[1][kuestionCount - 1] && recipient[1][kuestionCount - 1].timestamp ? 
 				recipient[1][kuestionCount - 1].timestamp.toLocaleString() : "" %></td>
-<% for(var answer in recipient[1]) { %>
-			<td><%= recipient[1][answer].answer %></td>
+<% for(var answer = 0; answer < kuestionCount; answer++) { %>
+			<td><%= recipient[1][answer] ? recipient[1][answer].answer : '' %></td>
 <% } %>
 		</tr>
 <% }) %>
