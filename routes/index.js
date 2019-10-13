@@ -66,6 +66,35 @@ router.get('/admin/unsure', function(req, res, next) {
   });
 });
 
+router.get('/admin/timings', function(req, res, next) {
+  if(req.query.jelszo != 'bumburnyak') {
+    return res.sendStatus(403);
+  };
+  Kuestion.count(function(err, kuestionCount) {
+   Answer.find({}, function (err, doc) {
+    let allAnswers = {};
+    doc.forEach(function (element) {
+      if(!allAnswers[element.sender]) {
+        allAnswers[element.sender] = {};
+      }
+      allAnswers[element.sender][element.kuestion] = element;
+    });
+    let answerArray = [];
+    for(var answer in allAnswers) {
+      answerArray.push([answer, allAnswers[answer]]);
+    }
+    answerArray.sort(function(a, b) {
+      if(a[1][0] && b[1][0]) {
+        return a[1][0].timestamp - b[1][0].timestamp;
+      } else {
+        return false;
+      }
+    })
+    res.render("timingadmin", { allAnswers: answerArray, kuestionCount: kuestionCount });
+   }).sort('timestamp');
+  });
+});
+
 router.get("/unsure", function(req, res, next) {
   Kuestion.find({type: 'image'}, function(err, doc) {
     res.render('unsure', { allKuestions: doc });
