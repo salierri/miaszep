@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/upload');
+var adminRouter = require('./routes/admin');
 var mongoose = require('mongoose');
 var multer = require("multer");
 
@@ -57,5 +58,6 @@ app.use(multer({storage: storage}).single("photo"));
 
 app.use('/', indexRouter);
 app.use('/upload', usersRouter);
+app.use('/admin', adminRouter);
 
 module.exports = app;

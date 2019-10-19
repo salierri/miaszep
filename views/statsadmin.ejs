@@ -16,10 +16,10 @@
         <li class="nav-item">
           <a class="nav-link" href="/admin/unsure?jelszo=bumburnyak">Unsures</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="/admin/timings?jelszo=bumburnyak">Timings</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/admin/stats?jelszo=bumburnyak">Statistics</a>
         </li>
       </ul>
@@ -27,20 +27,12 @@
   </div>
   <div id="container">
   <table class="table table-bordered table-hover table-stripped">
-    <thead>
-      <th>Küldő azonosító</th>
-      <th>Csoport</th>
-      <th>Válaszok időpontjai</th>
-    </thead>
-<% allAnswers.forEach(function(recipient) { %>
-    <tr>
-      <td><%= recipient[0] %></td>
-      <td><%= recipient[1][0] ? recipient[1][0].group : "" %></td>
-<% for(var answer = 0; answer < kuestionCount; answer++) { %>
-      <td><%= recipient[1][answer] ? (recipient[1][answer].timestamp ? recipient[1][answer].timestamp.toLocaleString() : "") : "" %></td>
-<% } %>
-    </tr>
-<% }) %>
+    <% for(var stat in stats) { %>
+      <tr>
+        <td><b><%= statNames[stat] %></b></td>
+        <td><%= stats[stat] %></td>
+      </tr>
+    <% } %>
   </table>
   </div>
 </body>
