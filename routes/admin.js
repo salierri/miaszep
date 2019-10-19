@@ -69,6 +69,7 @@ router.get('/stats', adminPass, async function(req, res, next) {
   stats.answerCount = await Answer.distinct('sender');
   stats.answerCount = stats.answerCount.length;
   stats.finishedCount = await Answer.find({ kuestion: 54 });
+  stats.finishedCount = stats.finishedCount.length;
   let firstAndLast = await Answer.find({$or: [{kuestion: 1},{kuestion: 2}]});
   res.render('statsadmin', { stats: stats, statNames: statNames });
 });
